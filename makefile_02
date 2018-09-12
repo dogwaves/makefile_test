@@ -1,0 +1,30 @@
+#Sameple Makefile
+#objects = main.o multiply.o right_triangle.o sub.o add.o
+$(info start make!!)
+include objects.mk
+include objects.mk
+$(edit): $(objects)
+	@gcc -o edit $(objects) -lm
+	@echo build all
+
+multiply.o: multiply.c mymath.h
+	@gcc -c multiply.c
+
+sub.o : sub.c mymath.h
+	@gcc -c sub.c	
+
+add.o : add.c mymath.h
+	@gcc -c add.c
+
+right_triangle.o: right_triangle.c
+	@gcc -c right_triangle.c
+
+main.o: main.c triangle.h mymath.h
+#@gcc -c main.c
+
+.PHONY: clean
+clean: 
+	@rm -r edit $(objects)
+	@echo clean all
+
+
